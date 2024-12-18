@@ -1,7 +1,7 @@
 <template>
 	<view class="order-card">
 		<view class="order-card-title">
-			<view style="width: fit-content;">{{props.canceledOrder.type}}</view>
+			<view style="width: fit-content;">{{props.canceledOrder.venueType}}</view>
 			<view style="display: flex;align-items: center;">
 				<view style="width: fit-content;font-weight: 500;">总金额 ：</view>
 				<view style="width: fit-content;font-size: 35rpx;font-weight: bold;">
@@ -18,7 +18,7 @@
 			</view>
 			<view class="reservation-date-area">
 				<view class="reservation-date-text">预约日期</view>
-				<view class="text">{{props.canceledOrder.useDate}}</view>
+				<view class="text">{{props.canceledOrder.reservationDate}}</view>
 			</view>
 			<view class="use-date-area">
 				<view class="use-date-text">使用日期</view>
@@ -64,6 +64,7 @@
 			id: Number,
 			type: String,
 			count: Number,
+			reservationDate: String,
 			useDate: String,
 			venue1: {
 				number: Number,

@@ -17,7 +17,7 @@
 			</image>
 
 		</view>
-		<view class="hello" @click="hasNotLogin(loginState,'',true)">
+		<view class="hello" @click="hasNotLogin(loginState,'')">
 			<view style="font-size: 40rpx;font-weight: 200;margin-top: 1rpx;">你好，</view>
 			<view class="nickname">{{nickname}}</view>
 		</view>
@@ -28,39 +28,39 @@
 		<view class="order-status">
 			<view class="order-option">
 				<image src="../../static/order_icon/to-be-paid.png"
-					@click="hasNotLogin(loginState,'/pages/order/to-be-paid',false)"></image>
+					@click="hasNotLogin(loginState,'/pages/order/to-be-paid')"></image>
 				<view>待支付</view>
 			</view>
 			<view class="order-option">
 				<image src="../../static/order_icon/to-be-used.png"
-					@click="hasNotLogin(loginState,'/pages/order/to-be-used',false)"></image>
+					@click="hasNotLogin(loginState,'/pages/order/to-be-used')"></image>
 				<view>待使用</view>
 			</view>
 			<view class="order-option">
 				<image src="../../static/order_icon/finished.png"
-					@click="hasNotLogin(loginState,'/pages/order/finished',false)">
+					@click="hasNotLogin(loginState,'/pages/order/finished')">
 				</image>
 				<view>已完成</view>
 			</view>
 			<view class="order-option">
 				<image src="../../static/order_icon/cancelled.png"
-					@click="hasNotLogin(loginState,'/pages/order/canceled',false)">
+					@click="hasNotLogin(loginState,'/pages/order/canceled')">
 				</image>
 				<view>已取消</view>
 			</view>
 			<view class="order-option">
 				<image src="../../static/order_icon/after-sales.png"
-					@click="hasNotLogin(loginState,'/pages/order/after-sales',false)"></image>
+					@click="hasNotLogin(loginState,'/pages/order/after-sales')"></image>
 				<view>售后</view>
 			</view>
 
 		</view>
 	</view>
 	<view class="view-button">
-		<button @click="hasNotLogin(loginState,'/pages/my/changeNickname',false)">修改昵称</button>
+		<button @click="hasNotLogin(loginState,'/pages/my/changeNickname')">修改昵称</button>
 	</view>
 	<view class="view-button">
-		<button @click="hasNotLogin(loginState,'/pages/my/changePassword',false)">修改密码</button>
+		<button @click="hasNotLogin(loginState,'/pages/my/changePassword')">修改密码</button>
 	</view>
 	<view class="view-button">
 		<button :disabled="!loginState" @click="login_Out()">退出账号</button>

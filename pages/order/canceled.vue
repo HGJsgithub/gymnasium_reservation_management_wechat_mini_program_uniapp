@@ -14,16 +14,44 @@
 	import {
 		computed,
 	} from 'vue';
+	uni.showLoading({
+		title: '加载中'
+	});
+	const baseUrl = getApp().globalData.baseUrl
+	const userID = uni.getStorageSync('userInfo').id
 	let orderList = []
-	let show = computed(
-		() => {
-			if (orderList.length != 0) {
-				return true
-			} else {
-				return false
+	let show = ref(false)
+	uni.request({
+		url: baseUrl + "/order/getOrderData",
+		method: 'POST',
+		data: {
+			userID: userID,
+			state: '已取消'
+		},
+		header: {
+			"Content-Type": "application/x-www-form-urlencoded",
+		},
+		success: (res) => {
+			if (res.data.orderData != null) {
+				orderList = res.data.orderData.reverse()
 			}
+			show.value = res.data.status
+			uni.hideLoading()
+		},
+		fail: (res) => {
+			console.log('发送网络请求读取待使用订单时出现异常： ', res);
+			uni.hideLoading()
+			uni.showToast({
+				title: '读取待使用订单错误！',
+				icon: 'fail',
+				success: () => {
+					uni.switchTab({
+						url: '/pages/my/my'
+					})
+				}
+			})
 		}
-	)
+	})
 </script>
 
 <style lang="scss">

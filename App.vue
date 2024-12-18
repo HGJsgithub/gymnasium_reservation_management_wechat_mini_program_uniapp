@@ -18,7 +18,9 @@
 		onShow: function() {},
 		onHide: function() {},
 		globalData: {
-			baseUrl: "http://192.168.31.9:8080",
+			// baseUrl: "http://192.168.3.5:8080",
+			baseUrl:"https://credible-halibut-sound.ngrok-free.app",
+			// baseUrl: "http://[2409:8a55:1e10:f6b4:3231:1703:c48c:b4cc]:8080",
 			changeSelectedState,
 			checkPhone,
 			checkPassword,

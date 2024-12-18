@@ -82,7 +82,14 @@
 					uni.showToast({
 						title: '修改成功',
 						icon: 'success',
-						duration: 500
+						duration: 1000,
+						success: () => {
+							setTimeout(() => {
+								uni.switchTab({
+									url: '/pages/my/my'
+								});
+							}, 1000);
+						}
 					})
 				}
 			},
@@ -92,9 +99,11 @@
 					title: '修改密码错误！',
 					icon: 'fail',
 					success: () => {
-						uni.switchTab({
-							url: '/pages/my/my'
-						})
+						setTimeout(() => {
+							uni.switchTab({
+								url: '/pages/my/my'
+							});
+						}, 1000);
 					}
 				})
 			}

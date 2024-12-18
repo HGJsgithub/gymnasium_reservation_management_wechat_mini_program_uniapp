@@ -1,29 +1,24 @@
 class loginVerification {
-	loginVerification(loginState, path, direct) {
-		if (direct == true) {
-			uni.navigateTo({
-				url: '/pages/login-registration/login/user-login',
+	loginVerification(loginState, path) {
+		if (loginState == false) {
+			uni.showToast({
+				title: '您还未登录！',
+				duration: 1000,
+				mask: true,
+				success: () => {
+					setTimeout(() => {
+						uni.navigateTo({
+							url: '/pages/login-registration/login/user-login',
+						})
+					}, 1000)
+				}
 			})
 		} else {
-			if (loginState == false) {
-				uni.showToast({
-					title: '您还未登录！',
-					duration: 750,
-					mask: true,
-					success: () => {
-						setTimeout(() => {
-							uni.navigateTo({
-								url: '/pages/login-registration/login/user-login',
-							})
-						}, 750)
-					}
-				})
-			} else {
-				uni.navigateTo({
-					url: path
-				})
-			}
+			uni.navigateTo({
+				url: path
+			})
 		}
+
 
 	}
 }

@@ -113,15 +113,15 @@
 			confirmText: "否",
 			cancelText: "是",
 			confirmColor: "#11c53e",
-			cancelColor: "#ff0000",
+			cancelColor: "red",
 			success: (option) => {
 				//点击了确认取消
 				if (option.cancel) {
 					order.state = '已取消'
+					gd.saveOrderData.saveOrderData(order, '/order/saveOrderData')
 					uni.removeStorageSync('timeField1')
 					uni.removeStorageSync('timeField2')
 					uni.removeStorageSync('changeVenueStateUrl')
-					sc('add_canceled_Order_List', order)
 					//显示取消成功并跳转到首页
 					uni.showToast({
 						title: '取消成功',
