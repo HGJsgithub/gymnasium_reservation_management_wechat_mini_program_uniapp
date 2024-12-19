@@ -3,7 +3,7 @@
 		<view class="login-title">体育场馆预约</view>
 		<view class="login-content">
 			<view class="login-phone">
-				<uni-easyinput type="number" placeholder="请输入手机号" v-model="phone" maxlength="11"></uni-easyinput>
+				<uni-easyinput type="text" placeholder="请输入手机号" v-model="phone" maxlength="11"></uni-easyinput>
 			</view>
 			<view class="login-password">
 				<uni-easyinput type="password" placeholder="密码长度在6-16位之间" v-model="password" maxlength="16"
@@ -19,7 +19,7 @@
 			<view class="login-password" @click="find_Password()">找回密码</view>
 		</view>
 		<view class="admin-login">
-			<button type="primary" @click="wx_Login()">微信登录</button>
+			<!-- <button type="primary" @click="wx_Login()">微信登录</button> -->
 		</view>
 	</view>
 </template>
@@ -75,7 +75,6 @@
 				} else {
 					uni.request({
 						url: baseUrl + "/auth/login/user",
-						// url: "https://credible-halibut-sound.ngrok-free.app/auth/login/user",
 						method: "POST",
 						data: {
 							phone: phone.value,
@@ -153,7 +152,6 @@
 
 <style lang="scss">
 	.login {
-		// background-image: linear-gradient(120deg, #05ee28, #6a3dad);
 		background-color: #fff;
 		width: 100%;
 		background-position: center;

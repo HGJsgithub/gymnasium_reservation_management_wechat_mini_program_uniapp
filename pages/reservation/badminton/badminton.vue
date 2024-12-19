@@ -1,5 +1,5 @@
 <template>
-	<view style="width: 100%;" v-if="show1&&show2">
+	<view style="width: 100%;" v-if="show">
 		<date-select @selectDate="selectDate"></date-select>
 		<view class="select-menu">
 			<view class="time-area">
@@ -49,10 +49,9 @@
 		title: '加载中'
 	});
 	const baseUrl = getApp().globalData.baseUrl
-	//用来判断是否从数据库获得今天的场地状态表
-	let show1 = ref(false)
+	//用来判断是否从数据库获得场地状态表
+	let show = ref(false)
 	//用来判断是否从数据库获得明天的场地状态表
-	let show2 = ref(false)
 	const ss = useStore().state
 	const gd = getApp().globalData
 	const loginState = uni.getStorageSync('loginState')
@@ -84,32 +83,21 @@
 	let venueState2 = ref([null])
 	let venueNum2 = ref(100)
 
-	//获取今天的场地状态
+	//获取今天和明天的场地状态表
 	uni.request({
-		url: baseUrl + "/venueInfo/venueState/badminton/getVenueState/today",
+		url: baseUrl + "/venueInfo/venueState/badminton/getVenueState",
 		header: {
 			"ngrok-skip-browser-warning": "true",
 		},
 		success: (res) => {
-			venueState.value = res.data
+			venueState.value = res.data.today
 			venueNum.value = venueState.value.length
-			venueState1.value = res.data
+			venueState1.value = res.data.today
 			venueNum1.value = venueState1.value.length
-			uni.hideLoading();
-			show1.value = true
-		}
-	})
-	//获取明天的场地状态表
-	uni.request({
-		url: baseUrl + "/venueInfo/venueState/badminton/getVenueState/tomorrow",
-		header: {
-			"ngrok-skip-browser-warning": "true",
-		},
-		success: (res) => {
-			venueState2.value = res.data
+			venueState2.value = res.data.tomorrow
 			venueNum2.value = venueState2.value.length
+			show.value = true
 			uni.hideLoading();
-			show2.value = true
 		}
 	})
 

@@ -2,7 +2,7 @@
 	<view class="registration">
 		<view class="registration-content">
 			<view class="input-area">
-				<uni-easyinput type="number" placeholder="请输入手机号" v-model="newUser.phone"
+				<uni-easyinput type="text" placeholder="请输入手机号" v-model="newUser.phone"
 					maxlength="11"></uni-easyinput>
 			</view>
 			<view class="input-area">
